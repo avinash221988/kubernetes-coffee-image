@@ -14,14 +14,14 @@ spec:
     targetRevision: main
     helm:
       parameters: #Precedence 1
-#        - name: resources.limits.cpu
-#          value: "150m"
-#        - name: resources.limits.memory
-#          value: "150Mi"
-#        - name: resources.requests.cpu
-#          value: "150m"
-#        - name: resources.requests.memory
-#          value: "150Mi"
+       - name: resources.limits.cpu
+         value: "150m"
+       - name: resources.limits.memory
+         value: "150Mi"
+       - name: resources.requests.cpu
+         value: "150m"
+       - name: resources.requests.memory
+         value: "150Mi"
       values: | #Precedence 2
         resources:
           limits:
