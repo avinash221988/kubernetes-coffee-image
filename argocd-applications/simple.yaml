@@ -1,24 +1,37 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: simple-app
+  name: simple-app-manual
   namespace: argocd
 spec:
   destination:
-    namespace: simple-app
+    namespace: simple-app-manual
     server: https://kubernetes.default.svc
   project: default
   source:
-    helm:
-      parameters:
-        - name: service.type
-          value: LoadBalancer
     path: simple/chart
     repoURL: https://github.com/avinash221988/kubernetes-coffee-image
     targetRevision: main
+    helm:
+      parameters: #Precedence 1
+#        - name: resources.limits.cpu
+#          value: "150m"
+#        - name: resources.limits.memory
+#          value: "150Mi"
+#        - name: resources.requests.cpu
+#          value: "150m"
+#        - name: resources.requests.memory
+#          value: "150Mi"
+      values: | #Precedence 2
+        resources:
+          limits:
+            cpu: 200m
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
+      valueFiles: #Precedence 3
+        - ./coffee-values.yaml
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
     syncOptions:
       - CreateNamespace=true
