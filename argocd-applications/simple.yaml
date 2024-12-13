@@ -22,14 +22,14 @@ spec:
       #    value: "150m"
       #  - name: resources.requests.memory
       #    value: "150Mi"
-      # values: | #Precedence 2
-      #   resources:
-      #     limits:
-      #       cpu: 200m
-      #       memory: 128Mi
-      #     requests:
-      #       cpu: 100m
-      #       memory: 64Mi
+      values: | #Precedence 2
+        resources:
+          limits:
+            cpu: 200m
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
       valueFiles: #Precedence 3
         - ../chart/coffee-values.yaml
   syncPolicy:
