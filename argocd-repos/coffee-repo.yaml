@@ -1,0 +1,9 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppRepository
+metadata:
+  name: my-repo
+  namespace: argocd
+spec:
+  url: https://github.com/avinash221988/kubernetes-coffee-image.git
+  type: git
+  name: coffee-repo
