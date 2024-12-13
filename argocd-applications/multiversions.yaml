@@ -14,7 +14,7 @@ spec:
         - name: service.type
           value: NodePort
     path: multiversions/chart
-    repoURL: https://github.com/QJoly/kubernetes-coffee-image
+    repoURL: https://github.com/avinash221988/kubernetes-coffee-image
     targetRevision: main
   syncPolicy:
     syncOptions:
