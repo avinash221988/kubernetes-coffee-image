@@ -13,15 +13,15 @@ spec:
     repoURL: https://github.com/avinash221988/kubernetes-coffee-image
     targetRevision: main
     helm:
-      # parameters: #Precedence 1
-      #  - name: resources.limits.cpu
-      #    value: "150m"
-      #  - name: resources.limits.memory
-      #    value: "150Mi"
-      #  - name: resources.requests.cpu
-      #    value: "150m"
-      #  - name: resources.requests.memory
-      #    value: "150Mi"
+      parameters: #Precedence 1
+       - name: resources.limits.cpu
+         value: "150m"
+       - name: resources.limits.memory
+         value: "150Mi"
+       - name: resources.requests.cpu
+         value: "150m"
+       - name: resources.requests.memory
+         value: "150Mi"
       values: | #Precedence 2
         resources:
           limits:
@@ -30,8 +30,8 @@ spec:
           requests:
             cpu: 100m
             memory: 64Mi
-      valueFiles: #Precedence 3
-        - ../chart/coffee-values.yaml
+      # valueFiles: #Precedence 3
+      #   - ../chart/coffee-values.yaml
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
