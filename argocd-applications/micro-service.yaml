@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: micro-service/manifests
-    repoURL: https://github.com/QJoly/kubernetes-coffee-image
+    repoURL: https://github.com/avinash221988/kubernetes-coffee-image
     targetRevision: HEAD
   syncPolicy:
     automated: {}
