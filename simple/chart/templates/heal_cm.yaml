@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: unused-cm
+  name: heal-cm
   namespace: simple-app
 data:
   key: "somedata"
