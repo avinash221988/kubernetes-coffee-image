@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: simple-coffee
+  namespace: argocd
+spec:
+  generators:
+    - clusters: {}
+  template:
+    metadata:
+      name: 'simple-coffee-{{name}}'
+    spec:
+      project: default
+      source:
+        path: simple/chart
+        repoURL: https://github.com/avinash221988/kubernetes-coffee-image
+        targetRevision: main
+      destination:
+        namespace: simple-coffee-set
+        server: '{{server}}'
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true
+        syncOptions:
+          - CreateNamespace=true
+      helm:
+        parameters:
+          - name: resources.limits.cpu
+            value: "150m"
+          - name: resources.limits.memory
+            value: "150Mi"
+          - name: resources.requests.cpu
+            value: "150m"
+          - name: resources.requests.memory
+            value: "150Mi"
+        values: |
+          resources:
+            limits:
+              cpu: 200m
+              memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
