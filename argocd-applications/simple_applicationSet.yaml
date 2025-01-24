@@ -1,0 +1,49 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: simple-app-set
+  namespace: argocd
+spec:
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            app: coffee
+  template:
+    metadata:
+      name: simple-app-{{cluster.name}}  # This will append the cluster name to the application name
+    spec:
+      destination:
+        namespace: simple-app
+        server: https://kubernetes.default.svc  # Use dynamic cluster URL based on the cluster in the set
+      project: default
+      source:
+        path: simple/chart
+        repoURL: https://github.com/avinash221988/kubernetes-coffee-image
+        targetRevision: main
+        helm:
+          parameters: # Precedence 1
+            - name: resources.limits.cpu
+              value: "150m"
+            - name: resources.limits.memory
+              value: "150Mi"
+            - name: resources.requests.cpu
+              value: "150m"
+            - name: resources.requests.memory
+              value: "150Mi"
+          values: | # Precedence 2
+            resources:
+              limits:
+                cpu: 200m
+                memory: 128Mi
+              requests:
+                cpu: 100m
+                memory: 64Mi
+          # valueFiles: # Precedence 3
+          #   - ../chart/coffee-values.yaml
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+        automated:
+          prune: true
+          selfHeal: true
