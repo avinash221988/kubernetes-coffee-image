@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: qjoly/kubernetes-coffee-image
+  repository: avinash221988/kubernetes-coffee-image
   pullPolicy: IfNotPresent
   tag: "simple"
 
