@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: time-coffee
+  name: simple-app
   namespace: argocd
 spec:
   clusterResourceWhitelist:
@@ -19,5 +19,6 @@ spec:
     - name: read-only
       description: "Read-only access to simple-app"
       policies:
-        - p, role:simple-app-read-only, applications, get, time-coffee/simple-app, allow
-        - g, avinash, role:simple-app-read-only
+        - p, role:simple-app-read-only, applications, get, simple-app/simple-app, allow
+        - p, role:admin, *, *, time-coffee/*, allow
+        - g, avinash, role:admin
