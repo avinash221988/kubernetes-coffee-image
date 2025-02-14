@@ -20,5 +20,5 @@ spec:
       description: "Read-only access to simple-app"
       policies:
         - p, role:simple-app-read-only, applications, get, simple-app/simple-app, allow
-        - p, role:admin, *, *, time-coffee/*, allow
+        - p, role:admin, *, *, *, allow
         - g, avinash, role:admin
