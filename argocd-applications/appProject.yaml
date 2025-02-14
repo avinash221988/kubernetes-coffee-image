@@ -9,9 +9,14 @@ spec:
       kind: '*'
   destinations:
     - name: in-cluster
-      namespace: '*'
+      namespace: simple-app
       server: https://kubernetes.default.svc
   sourceNamespaces:
     - simple-app
   sourceRepos:
     - https://github.com/avinash221988/kubernetes-coffee-image
+  roles:
+    - name: read-only
+      description: "Read-only access to simple-app"
+      policies:
+        - p, simple-app-read-only-role, applications, get, time-coffee/simple-app, allow
