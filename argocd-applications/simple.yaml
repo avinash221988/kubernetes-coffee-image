@@ -7,7 +7,7 @@ spec:
   destination:
     namespace: simple-app
     server: https://kubernetes.default.svc
-  project: simple-app
+  project: default
   source:
     path: simple/chart
     repoURL: https://github.com/avinash221988/kubernetes-coffee-image
