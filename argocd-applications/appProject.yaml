@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: time-coffee
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  destinations:
+    - name: in-cluster
+      namespace: '*'
+      server: https://kubernetes.default.svc
+  sourceNamespaces:
+    - simple-app
+  sourceRepos:
+    - https://github.com/avinash221988/kubernetes-coffee-image

@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
 spec:
   generators:
-    - clusters: {}
+    - clusters: in-cluster
   template:
     metadata:
       name: 'simple-coffee-{{name}}'
