@@ -21,4 +21,4 @@ spec:
       policies:
         - p, role:simple-app-read-only, applications, get, simple-app/simple-app, allow
         - p, role:admin, *, *, *, allow
-        - g, avinash, role:simple-app-read-only
+        - g, avinash, role:admin
