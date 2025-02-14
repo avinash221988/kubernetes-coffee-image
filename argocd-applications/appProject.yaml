@@ -19,4 +19,5 @@ spec:
     - name: read-only
       description: "Read-only access to simple-app"
       policies:
-        - p, simple-app-read-only-role, applications, get, time-coffee/simple-app, allow
+        - p, role:simple-app-read-only, applications, get, time-coffee/simple-app, allow
+        - g, avinash, role:simple-app-read-only
